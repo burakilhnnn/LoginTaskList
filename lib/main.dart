@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/Pages/LoginPage.dart';
-import 'package:my_app/Pages/TaskListPage.dart';
-import 'package:my_app/Pages/TaskPage.dart';
+import 'package:my_app/Pages/ImageProvider.dart';
+import 'package:my_app/ResimSaglayici.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ResimSaglayici(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,14 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: ResimGoruntuleme(),
 
-      routes: {
-        '/task': (context) => TaskPage(),
-        '/taskList': (context) => TaskListPage(),
-        '/login': (context) => LoginPage(),
-        '/logout': (context) => LoginPage(),
-      },
+      routes: {},
     );
   }
 }
